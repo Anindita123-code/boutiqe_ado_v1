@@ -34,7 +34,10 @@ def all_products(request):
     """ A view to render all the products """
     products = Products.objects.all()
     query = None
-    category = None
+    categories = None
+
+    sort = None
+    direction = None
     if request.GET:
         """
         It's worth noting by the way, that this double underscore syntax is common when making queries in django.
@@ -45,6 +48,20 @@ def all_products(request):
         But this would take more queries and add unnecessary complexity.
         It's faster and easier to just drill into the related model using this double underscore syntax.
         """
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+
+        if 'direction' in request.GET:
+            if request.GET['direction'] == 'desc':
+                sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -57,11 +74,14 @@ def all_products(request):
 
             queries = Q(name__icontains=query)| Q(description__icontains=query)
             products = products.filter(queries)
+    
+    current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': products,
         'search_term': query,
-        'current_category': categories
+        'current_category': categories,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)
