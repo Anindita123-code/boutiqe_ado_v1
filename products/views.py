@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from .models import Products, Category
 from django.db.models import Q
+from django.db.models.functions import Lower
 
-# Create your views here.
 """
 We can access those url parameters in the all_products view by checking whether request.get exists.
 Since we named the text input in the form q. We can just check if q is in request.get
@@ -28,59 +28,60 @@ With those queries constructed. Now I can pass them to the filter method in orde
 Now I'll add the query to the context. And in the template call it search term.
 And we'll start with it as none at the top of this view to ensure we don't get an error when loading the products page without a search term.
 """
+# Create your views here.
 
 
 def all_products(request):
     """ A view to render all the products """
     products = Products.objects.all()
+
     query = None
     categories = None
-
     sort = None
     direction = None
-    if request.GET:
-        """
-        It's worth noting by the way, that this double underscore syntax is common when making queries in django.
-        Using it here means we're looking for the name field of the category model.
-        And we're able to do this because category and product are related with a foreign key.
-        An alternative way to do this would be to filter all categories down to those contained in this list
-        and then filter products based on the category ID instead of the name.
-        But this would take more queries and add unnecessary complexity.
-        It's faster and easier to just drill into the related model using this double underscore syntax.
-        """
 
+    if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
+
             sort = sortkey
+
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
+            
+            if sortkey == 'category':
+                sortkey = 'category__name'
 
-        if 'direction' in request.GET:
-            if request.GET['direction'] == 'desc':
-                sortkey = f'-{sortkey}'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+
             products = products.order_by(sortkey)
-
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, 'you didnot enter any search criteria')
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query)| Q(description__icontains=query)
-            products = products.filter(queries)
-    
-    current_sorting = f'{sort}_{direction}'
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
 
+            products = products.filter(queries)
+
+        current_sorting = f'{sort}_{direction}'
+ 
     context = {
         'products': products,
         'search_term': query,
-        'current_category': categories,
+        'current_categories': categories,
         'current_sorting': current_sorting,
     }
 
