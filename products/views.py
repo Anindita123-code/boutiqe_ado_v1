@@ -76,7 +76,7 @@ def all_products(request):
 
             products = products.filter(queries)
 
-        current_sorting = f'{sort}_{direction}'
+    current_sorting = f'{sort}_{direction}'
  
     context = {
         'products': products,
