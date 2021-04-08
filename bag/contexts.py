@@ -10,7 +10,7 @@ def bag_contents(request):
     total = 0
     product_count = 0
     bag = request.session.get('bag', {})
-    print(bag)
+    # print(bag)
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Products, pk=item_id)
@@ -28,7 +28,7 @@ def bag_contents(request):
                 product_count += quantity
                 bag_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'product': product,
                     'size': size,
                 })
