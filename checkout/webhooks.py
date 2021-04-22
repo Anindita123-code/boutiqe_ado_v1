@@ -20,23 +20,23 @@ def webhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
-    print('BEFORE TRY EXCEPT')
+    # print('BEFORE TRY EXCEPT')
 
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
-        print('IN TRY of TRY EXCEPT')
+        # print('IN TRY of TRY EXCEPT')
     except ValueError as e:
         # Invalid payload
-        print('IN ValueError or EXCEPT')
+        # print('IN ValueError or EXCEPT')
         return HttpResponse(status=400, content=e)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        print('IN SignatureVerificationError or EXCEPT')
+        # print('IN SignatureVerificationError or EXCEPT')
         return HttpResponse(status=400, content=e)
     except Exception as e:
-        print('IN Other Exception or EXCEPT')
+        # print('IN Other Exception or EXCEPT')
         return HttpResponse(content=e, status=400)
 
     # Set up a webhook handler
