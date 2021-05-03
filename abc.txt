@@ -1,0 +1,100 @@
+2021-05-03T10:11:46.371600+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+2021-05-03T10:11:46.371600+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+2021-05-03T10:11:46.371600+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+2021-05-03T10:11:46.371601+00:00 app[web.1]: File "/app/boutique_ado/settings.py", line 116, in <module>
+2021-05-03T10:11:46.371601+00:00 app[web.1]: 'default': dj_database_url.parse(os.environ('DATABASE_URL'))
+2021-05-03T10:11:46.371601+00:00 app[web.1]: TypeError: '_Environ' object is not callable
+2021-05-03T10:11:46.377775+00:00 app[web.1]: [2021-05-03 10:11:46 +0000] [8] [INFO] Worker exiting (pid: 8)
+2021-05-03T10:11:46.638195+00:00 app[web.1]: [2021-05-03 10:11:46 +0000] [7] [ERROR] Exception in worker process
+2021-05-03T10:11:46.638198+00:00 app[web.1]: Traceback (most recent call last):
+2021-05-03T10:11:46.638199+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+2021-05-03T10:11:46.638200+00:00 app[web.1]: worker.init_process()
+2021-05-03T10:11:46.638200+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/workers/base.py", line 134, in init_process
+2021-05-03T10:11:46.638201+00:00 app[web.1]: self.load_wsgi()
+2021-05-03T10:11:46.638201+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+2021-05-03T10:11:46.638202+00:00 app[web.1]: self.wsgi = self.app.wsgi()
+2021-05-03T10:11:46.638202+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2021-05-03T10:11:46.638202+00:00 app[web.1]: self.callable = self.load()
+2021-05-03T10:11:46.638203+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2021-05-03T10:11:46.638203+00:00 app[web.1]: return self.load_wsgiapp()
+2021-05-03T10:11:46.638204+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2021-05-03T10:11:46.638204+00:00 app[web.1]: return util.import_app(self.app_uri)
+2021-05-03T10:11:46.638205+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/util.py", line 359, in import_app
+2021-05-03T10:11:46.638205+00:00 app[web.1]: mod = importlib.import_module(module)
+2021-05-03T10:11:46.638205+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/importlib/__init__.py", line 127, in import_module
+2021-05-03T10:11:46.638206+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2021-05-03T10:11:46.638206+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+2021-05-03T10:11:46.638207+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+2021-05-03T10:11:46.638207+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+2021-05-03T10:11:46.638208+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+2021-05-03T10:11:46.638208+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+2021-05-03T10:11:46.638209+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+2021-05-03T10:11:46.638209+00:00 app[web.1]: File "/app/boutique_ado/wsgi.py", line 16, in <module>
+2021-05-03T10:11:46.638209+00:00 app[web.1]: application = get_wsgi_application()
+2021-05-03T10:11:46.638210+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2021-05-03T10:11:46.638210+00:00 app[web.1]: django.setup(set_prefix=False)
+2021-05-03T10:11:46.638211+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/django/__init__.py", line 19, in setup
+2021-05-03T10:11:46.638211+00:00 app[web.1]: configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2021-05-03T10:11:46.638211+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/django/conf/__init__.py", line 82, in __getattr__
+2021-05-03T10:11:46.638212+00:00 app[web.1]: self._setup(name)
+2021-05-03T10:11:46.638212+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/django/conf/__init__.py", line 69, in _setup
+2021-05-03T10:11:46.638212+00:00 app[web.1]: self._wrapped = Settings(settings_module)
+2021-05-03T10:11:46.638213+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/django/conf/__init__.py", line 170, in __init__
+2021-05-03T10:11:46.638213+00:00 app[web.1]: mod = importlib.import_module(self.SETTINGS_MODULE)
+2021-05-03T10:11:46.638213+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/importlib/__init__.py", line 127, in import_module
+2021-05-03T10:11:46.638214+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2021-05-03T10:11:46.638214+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+2021-05-03T10:11:46.638214+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+2021-05-03T10:11:46.638215+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+2021-05-03T10:11:46.638216+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+2021-05-03T10:11:46.638216+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+2021-05-03T10:11:46.638216+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+2021-05-03T10:11:46.638217+00:00 app[web.1]: File "/app/boutique_ado/settings.py", line 116, in <module>
+2021-05-03T10:11:46.638217+00:00 app[web.1]: 'default': dj_database_url.parse(os.environ('DATABASE_URL'))
+2021-05-03T10:11:46.638217+00:00 app[web.1]: TypeError: '_Environ' object is not callable
+2021-05-03T10:11:46.669913+00:00 app[web.1]: [2021-05-03 10:11:46 +0000] [7] [INFO] Worker exiting (pid: 7)
+2021-05-03T10:11:46.797245+00:00 app[web.1]: Traceback (most recent call last):
+2021-05-03T10:11:46.797297+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 209, in run
+2021-05-03T10:11:46.797948+00:00 app[web.1]: self.sleep()
+2021-05-03T10:11:46.798010+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 357, in sleep
+2021-05-03T10:11:46.798514+00:00 app[web.1]: ready = select.select([self.PIPE[0]], [], [], 1.0)
+2021-05-03T10:11:46.798548+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+2021-05-03T10:11:46.798877+00:00 app[web.1]: self.reap_workers()
+2021-05-03T10:11:46.799120+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+2021-05-03T10:11:46.799616+00:00 app[web.1]: raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+2021-05-03T10:11:46.799822+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+2021-05-03T10:11:46.799854+00:00 app[web.1]: 
+2021-05-03T10:11:46.799856+00:00 app[web.1]: During handling of the above exception, another exception occurred:
+2021-05-03T10:11:46.799856+00:00 app[web.1]: 
+2021-05-03T10:11:46.799887+00:00 app[web.1]: Traceback (most recent call last):
+2021-05-03T10:11:46.799920+00:00 app[web.1]: File "/app/.heroku/python/bin/gunicorn", line 8, in <module>
+2021-05-03T10:11:46.800278+00:00 app[web.1]: sys.exit(run())
+2021-05-03T10:11:46.800309+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2021-05-03T10:11:46.800544+00:00 app[web.1]: WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2021-05-03T10:11:46.800582+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/base.py", line 231, in run
+2021-05-03T10:11:46.800924+00:00 app[web.1]: super().run()
+2021-05-03T10:11:46.800963+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/app/base.py", line 72, in run
+2021-05-03T10:11:46.801193+00:00 app[web.1]: Arbiter(self).run()
+2021-05-03T10:11:46.801229+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 229, in run
+2021-05-03T10:11:46.801558+00:00 app[web.1]: self.halt(reason=inst.reason, exit_status=inst.exit_status)
+2021-05-03T10:11:46.801605+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 342, in halt
+2021-05-03T10:11:46.802071+00:00 app[web.1]: self.stop()
+2021-05-03T10:11:46.802108+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 393, in stop
+2021-05-03T10:11:46.802455+00:00 app[web.1]: time.sleep(0.1)
+2021-05-03T10:11:46.802489+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+2021-05-03T10:11:46.802772+00:00 app[web.1]: self.reap_workers()
+2021-05-03T10:11:46.802806+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+2021-05-03T10:11:46.803274+00:00 app[web.1]: raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+2021-05-03T10:11:46.803444+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+2021-05-03T10:11:46.927817+00:00 heroku[web.1]: Process exited with status 1
+2021-05-03T10:11:47.034936+00:00 heroku[web.1]: State changed from up to crashed
+2021-05-03T10:12:45.000100+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=anindita-boutique-ado.herokuapp.com request_id=906b2d79-c4ac-4ed3-9111-2f6668d05df2 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:12:45.795155+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=anindita-boutique-ado.herokuapp.com request_id=ac80e1b9-f808-455d-adf1-c49bcc10253e fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:13:45.586466+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=anindita-boutique-ado.herokuapp.com request_id=c590f545-bd96-4b3e-b9ee-d1245ebc6f89 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:13:46.002609+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=anindita-boutique-ado.herokuapp.com request_id=86bff006-d17a-4de6-bddd-f180035d1c5f fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:13:54.845096+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=anindita-boutique-ado.herokuapp.com request_id=7ff7aa28-5dcd-4613-b4a5-0985c3383fb0 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:13:55.212585+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=anindita-boutique-ado.herokuapp.com request_id=e29aca88-071d-4903-a71b-0cd863eeeb0d fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:16:57.201584+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=anindita-boutique-ado.herokuapp.com request_id=59876bf9-d74f-4e11-bc12-96c65b2cecd2 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:16:57.492093+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=anindita-boutique-ado.herokuapp.com request_id=787ebe91-1775-44ce-8c60-e3c7841ee904 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:23:09.671032+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=anindita-boutique-ado.herokuapp.com request_id=5b4fa0bb-42cf-43a8-861d-65362e673e6e fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-03T10:23:09.858377+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=anindita-boutique-ado.herokuapp.com request_id=cd51835f-3ff0-41fd-89b4-e5e8ecc2e1d7 fwd="109.57.82.39" dyno= connect= service= status=503 bytes= protocol=https
